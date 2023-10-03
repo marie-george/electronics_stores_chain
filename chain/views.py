@@ -2,12 +2,13 @@ from rest_framework import generics
 from rest_framework.permissions import IsAuthenticated
 
 from chain.models import ChainUnit
+from chain.permissions import IsActive
 from chain.serializers import ChainUnitSerializer
 
 
 class ChainUnitCreateAPIView(generics.CreateAPIView):
     serializer_class = ChainUnitSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated, IsActive]
 
     def perform_create(self, serializer):
         new_module = serializer.save()
@@ -18,7 +19,7 @@ class ChainUnitCreateAPIView(generics.CreateAPIView):
 class ChainUnitUpdateAPIView(generics.UpdateAPIView):
     serializer_class = ChainUnitSerializer
     queryset = ChainUnit.objects.all()
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated, IsActive]
 
     def get_queryset(self):
         if getattr(self, "swagger_fake_view", False):
@@ -30,7 +31,7 @@ class ChainUnitUpdateAPIView(generics.UpdateAPIView):
 
 class ChainUnitDestroyAPIView(generics.DestroyAPIView):
     queryset = ChainUnit.objects.all()
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated, IsActive]
 
     def get_queryset(self):
         if getattr(self, "swagger_fake_view", False):
@@ -43,7 +44,7 @@ class ChainUnitDestroyAPIView(generics.DestroyAPIView):
 class ChainUnitRetrieveAPIView(generics.RetrieveAPIView):
     serializer_class = ChainUnitSerializer
     queryset = ChainUnit.objects.all()
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated, IsActive]
 
     def get_queryset(self):
         if getattr(self, "swagger_fake_view", False):
@@ -56,7 +57,7 @@ class ChainUnitRetrieveAPIView(generics.RetrieveAPIView):
 class ChainUnitListAPIView(generics.ListAPIView):
     serializer_class = ChainUnitSerializer
     queryset = ChainUnit.objects.all()
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated, IsActive]
 
     def get_queryset(self):
         if getattr(self, "swagger_fake_view", False):
