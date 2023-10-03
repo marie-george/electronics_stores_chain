@@ -23,8 +23,8 @@ class ChainUnit(models.Model):
     hierarchy_level = models.CharField(choices=hierarchy_levels, verbose_name='уровень иерархии')
 
     class Meta:
-        verbose_name = 'звено цепи'
-        verbose_name_plural = 'звенья цепи'
+        verbose_name = 'объект сети'
+        verbose_name_plural = 'объекты сети'
         ordering = ('name',)
 
     def __str__(self):
@@ -36,3 +36,11 @@ class Product(models.Model):
     model_name = models.CharField(max_length=150, verbose_name='модель')
     issue_date = models.DateField(verbose_name='дата выхода на рынок')
     store = models.ForeignKey(ChainUnit, on_delete=models.CASCADE, blank=True, null=True, verbose_name='магазин')
+
+    class Meta:
+        verbose_name = 'продукт'
+        verbose_name_plural = 'продукты'
+        ordering = ('name',)
+
+    def __str__(self):
+        return self.name
