@@ -13,7 +13,7 @@ class ChainUnit(models.Model):
     street = models.CharField(max_length=150, verbose_name='улица')
     bld = models.CharField(max_length=150, verbose_name='номер дом')
     supplier = models.ForeignKey('self', on_delete=models.CASCADE, blank=True, null=True, verbose_name='поставщик')
-    debt = models.FloatField(default=0, verbose_name='задолженность перед поставщиком')
+    debt = models.DecimalField(max_digits=50, decimal_places=2, default=0, verbose_name='задолженность перед поставщиком')
     creation_date = models.DateTimeField(auto_now_add=True, verbose_name='время создания')
     hierarchy_levels = (
         ('factory', 'завод'),
