@@ -29,3 +29,10 @@ class ChainUnit(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Product(models.Model):
+    name = models.CharField(max_length=150, verbose_name='название')
+    model_name = models.CharField(max_length=150, verbose_name='модель')
+    issue_date = models.DateField(verbose_name='дата выхода на рынок')
+    store = models.ForeignKey(ChainUnit, on_delete=models.CASCADE, blank=True, null=True, verbose_name='магазин')
