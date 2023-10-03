@@ -7,4 +7,4 @@ class ChainUnitSerializer(serializers.ModelSerializer):
     class Meta:
         model = ChainUnit
         fields = '__all__'
-        # validators = [hierarchy_level_validator]
+        validators = [hierarchy_level_validator]
