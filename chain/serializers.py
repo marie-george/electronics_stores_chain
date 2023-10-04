@@ -8,3 +8,11 @@ class ChainUnitSerializer(serializers.ModelSerializer):
         model = ChainUnit
         fields = '__all__'
         validators = [hierarchy_level_validator]
+
+
+class ChainUnitUpdateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ChainUnit
+        fields = '__all__'
+        validators = [hierarchy_level_validator]
+        read_only_fields = ["debt"]

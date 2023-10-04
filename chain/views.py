@@ -3,7 +3,7 @@ from rest_framework.permissions import IsAuthenticated
 
 from chain.models import ChainUnit
 from chain.permissions import IsActive
-from chain.serializers import ChainUnitSerializer
+from chain.serializers import ChainUnitSerializer, ChainUnitUpdateSerializer
 
 
 class ChainUnitCreateAPIView(generics.CreateAPIView):
@@ -17,7 +17,7 @@ class ChainUnitCreateAPIView(generics.CreateAPIView):
 
 
 class ChainUnitUpdateAPIView(generics.UpdateAPIView):
-    serializer_class = ChainUnitSerializer
+    serializer_class = ChainUnitUpdateSerializer
     queryset = ChainUnit.objects.all()
     permission_classes = [IsAuthenticated, IsActive]
 
