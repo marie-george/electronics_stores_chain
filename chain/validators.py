@@ -4,6 +4,7 @@ from chain.models import ChainUnit
 
 
 def hierarchy_level_validator(data):
+    """Ограничивает возможность выбора поставщика в зависимости от уровня иерархии текущего объекта сети"""
     print(data)
     if data.get('hierarchy_level') == 'factory' and data.get('supplier') != None:
         raise ValidationError('Ваш уровень иерархии - Завод. Это верхний уровень, вы не можете указать поставщика')

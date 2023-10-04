@@ -7,6 +7,7 @@ from chain.serializers import ChainUnitSerializer, ChainUnitUpdateSerializer
 
 
 class ChainUnitCreateAPIView(generics.CreateAPIView):
+    """Создание объекта сети"""
     serializer_class = ChainUnitSerializer
     permission_classes = [IsAuthenticated, IsActive]
 
@@ -17,6 +18,7 @@ class ChainUnitCreateAPIView(generics.CreateAPIView):
 
 
 class ChainUnitUpdateAPIView(generics.UpdateAPIView):
+    """Редактирование объекта сети"""
     serializer_class = ChainUnitUpdateSerializer
     queryset = ChainUnit.objects.all()
     permission_classes = [IsAuthenticated, IsActive]
@@ -30,6 +32,7 @@ class ChainUnitUpdateAPIView(generics.UpdateAPIView):
 
 
 class ChainUnitDestroyAPIView(generics.DestroyAPIView):
+    """Удаление объекта сети"""
     queryset = ChainUnit.objects.all()
     permission_classes = [IsAuthenticated, IsActive]
 
@@ -42,6 +45,7 @@ class ChainUnitDestroyAPIView(generics.DestroyAPIView):
 
 
 class ChainUnitRetrieveAPIView(generics.RetrieveAPIView):
+    """Вывод подробной информации об объекте сети"""
     serializer_class = ChainUnitSerializer
     queryset = ChainUnit.objects.all()
     permission_classes = [IsAuthenticated, IsActive]
@@ -55,6 +59,7 @@ class ChainUnitRetrieveAPIView(generics.RetrieveAPIView):
 
 
 class ChainUnitListAPIView(generics.ListAPIView):
+    """Вывод списка объектов сети"""
     serializer_class = ChainUnitSerializer
     queryset = ChainUnit.objects.all()
     permission_classes = [IsAuthenticated, IsActive]

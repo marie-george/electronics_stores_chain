@@ -7,6 +7,7 @@ from chain.models import ChainUnit
 
 @admin.action(description="Очистить задолженность перед поставщиком")
 def clear_debt(modeladmin, request, queryset):
+    """Создание «admin action», очищающей задолженность перед поставщиком у выбранных объектов."""
     queryset.update(debt=0)
 
 
@@ -17,6 +18,7 @@ class ChainUnitAdmin(admin.ModelAdmin):
     actions = [clear_debt]
 
     def link_to_chain(self, obj):
+        """Создание ссылки на поставщика у объекта сети"""
         if obj.supplier:
             link = reverse("admin:chain_chainunit_change", args=[obj.supplier.id])
             return format_html('<a href="{}">{}</a>', link, obj.supplier.name)

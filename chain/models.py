@@ -4,6 +4,7 @@ from config import settings
 
 
 class ChainUnit(models.Model):
+    """Модель объекта сети магазинов"""
     owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, blank=True, null=True,
                               verbose_name='владелец')
     name = models.CharField(max_length=150, verbose_name='название')
@@ -32,6 +33,7 @@ class ChainUnit(models.Model):
 
 
 class Product(models.Model):
+    """Модель продукта"""
     name = models.CharField(max_length=150, verbose_name='название')
     model_name = models.CharField(max_length=150, verbose_name='модель')
     issue_date = models.DateField(verbose_name='дата выхода на рынок')

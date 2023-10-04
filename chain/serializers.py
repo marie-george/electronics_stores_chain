@@ -4,6 +4,7 @@ from chain.validators import hierarchy_level_validator
 
 
 class ChainUnitSerializer(serializers.ModelSerializer):
+    """Стандартный сериализатор, используется для большинства эндпойнтов"""
     class Meta:
         model = ChainUnit
         fields = '__all__'
@@ -11,6 +12,7 @@ class ChainUnitSerializer(serializers.ModelSerializer):
 
 
 class ChainUnitUpdateSerializer(serializers.ModelSerializer):
+    """Сериализатор для эдпойнта Update - не позволяет изменять поле Задолженность"""
     class Meta:
         model = ChainUnit
         fields = '__all__'
